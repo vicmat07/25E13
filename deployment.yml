@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projeto-final
+  labels:
+    app: projeto-final
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: projeto-final
+  template:
+    metadata:
+      labels:
+        app: projeto-final
+    spec:
+      containers:
+        - name: projeto-final
+          image: vimaolfa/projeto-final
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
