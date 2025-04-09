@@ -25,7 +25,7 @@ jobs:
       - name: Construir e enviar a imagem Docker
         uses: docker/build-push-action@v5
         with:
-          context: ./ProjetoFinal/ProjetoFinal
-          file: ./ProjetoFinal/ProjetoFinal/Dockerfile
+          context: ProjetoFinal/ProjetoFinal
+          file: ProjetoFinal/ProjetoFinal/Dockerfile
           push: true
-          tags: seu-usuario-dockerhub/projeto-final:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/projeto-final:latest
